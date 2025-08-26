@@ -41,6 +41,7 @@ jobs:
           config: p/owasp-top-ten
           output: ${{ github.workspace }}/semgrep.sarif   # Correct path
           output-format: sarif
+          fail-on: warning   # Optional: fail job if issues found
 
       # Upload SARIF results to GitHub
       - name: Upload Semgrep SARIF results
