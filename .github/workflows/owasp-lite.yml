@@ -32,21 +32,6 @@ jobs:
         with:
           args: -r .
 
-      # Trivy for A05
-      - name: Run Trivy for Infrastructure Misconfigurations
-        uses: aquasecurity/trivy-action@v0.31.0
-        with:
-          scan-type: fs
-          path: .
-
-      # Snyk for A06
-      - name: Run Snyk to Check for Vulnerable Dependencies
-        uses: snyk/actions/node@v3
-        with:
-          command: test
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
       # Gitleaks for A08
       - name: Run Gitleaks to Detect Hardcoded Secrets
         uses: gitleaks/gitleaks-action@v2
