@@ -1,17 +1,9 @@
-# ==============================================================
-# GitHub Actions workflow: "OWASP Lite"
-# Goal: Teach students how CI/CD can help check OWASP Top 10 issues
-# Tools used:
-#   - Gitleaks: finds hardcoded secrets (OWASP A08)
-#   - Semgrep: scans code for risky patterns (OWASP A01–A10)
-# ==============================================================
-
-name: OWASP Lite (Semgrep + Gitleaks)
+name: OWASP Top 10 Security Checks
 
 on:
-  pull_request:         # Run on every pull request
+  pull_request:
   push:
-    branches: [main]    # Run on every push to main branch
+    branches: [main]
 
 permissions:
   contents: read
@@ -19,24 +11,44 @@ permissions:
   security-events: write
 
 jobs:
-  gitleaks:   # ------------------- Secrets Scanning -------------------
-    name: Secrets scan (A08)
+  security_checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gitleaks/gitleaks-action@v2
-        with:
-          args: detect --no-git -v   # Fail if secrets are found
 
-  semgrep:    # ------------------- Static Code Analysis ----------------
-    name: SAST OWASP Top 10
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: semgrep/semgrep-action@v1
+      # Semgrep for A01, A03, A04, A07, A09, A10
+      - name: Run Semgrep for OWASP Top 10
+        uses: semgrep/semgrep-action@v1
         with:
           config: p/owasp-top-ten
           generateSarif: true
       - uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: semgrep.sarif
+
+      # Bandit for A02
+      - name: Run Bandit for Python Security
+        uses: PyCQA/bandit-action@v1
+        with:
+          args: -r .
+
+      # Trivy for A05
+      - name: Run Trivy for Infrastructure Misconfigurations
+        uses: aquasecurity/trivy-action@v0
+        with:
+          scan-type: fs
+          path: .
+
+      # Snyk for A06
+      - name: Run Snyk to Check for Vulnerable Dependencies
+        uses: snyk/actions/node@v2
+        with:
+          command: test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      # Gitleaks for A08
+      - name: Run Gitleaks to Detect Hardcoded Secrets
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          args: detect --no-git -v
