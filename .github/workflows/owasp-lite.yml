@@ -34,14 +34,14 @@ jobs:
 
       # Trivy for A05
       - name: Run Trivy for Infrastructure Misconfigurations
-        uses: aquasecurity/trivy-action@v0.31.1
+        uses: aquasecurity/trivy-action@v0.30.0
         with:
           scan-type: fs
           path: .
 
       # Snyk for A06
       - name: Run Snyk to Check for Vulnerable Dependencies
-        uses: snyk/actions/node@v3
+        uses: snyk/actions/node@v2
         with:
           command: test
         env:
