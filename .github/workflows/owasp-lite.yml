@@ -1,10 +1,10 @@
-# ==============================================================
-# GitHub Actions workflow: "OWASP Lite"
-# Goal: Teach students how CI/CD can help check OWASP Top 10 issues
-# Tools used:
-#   - Gitleaks: finds hardcoded secrets (OWASP A08)
-#   - Semgrep: scans code for risky patterns (OWASP A01–A10)
-# ==============================================================
+# ==============================================================  
+# GitHub Actions workflow: "OWASP Lite"  
+# Goal: Teach students how CI/CD can help check OWASP Top 10 issues  
+# Tools used:  
+#   - Gitleaks: finds hardcoded secrets (OWASP A08)  
+#   - Semgrep: scans code for risky patterns (OWASP A01–A10)  
+# ==============================================================  
 
 name: OWASP Lite (Semgrep + Gitleaks)
 
@@ -33,10 +33,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: semgrep/semgrep-action@v1
+
+      # Run Semgrep and output SARIF file
+      - name: Run Semgrep OWASP Top 10
+        uses: semgrep/semgrep-action@v1
         with:
           config: p/owasp-top-ten
-          generateSarif: true
-      - uses: github/codeql-action/upload-sarif@v3
+          output: ${{ github.workspace }}/semgrep.sarif   # Correct path
+          output-format: sarif
+
+      # Upload SARIF results to GitHub
+      - name: Upload Semgrep SARIF results
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: semgrep.sarif
+          sarif_file: ${{ github.workspace }}/semgrep.sarif
