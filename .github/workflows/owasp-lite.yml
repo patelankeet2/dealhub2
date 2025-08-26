@@ -1,0 +1,42 @@
+# ==============================================================
+# GitHub Actions workflow: "OWASP Lite"
+# Goal: Teach students how CI/CD can help check OWASP Top 10 issues
+# Tools used:
+#   - Gitleaks: finds hardcoded secrets (OWASP A08)
+#   - Semgrep: scans code for risky patterns (OWASP A01–A10)
+# ==============================================================
+
+name: OWASP Lite (Semgrep + Gitleaks)
+
+on:
+  pull_request:         # Run on every pull request
+  push:
+    branches: [main]    # Run on every push to main branch
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+jobs:
+  gitleaks:   # ------------------- Secrets Scanning -------------------
+    name: Secrets scan (A08)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gitleaks/gitleaks-action@v2
+        with:
+          args: detect --no-git -v   # Fail if secrets are found
+
+  semgrep:    # ------------------- Static Code Analysis ----------------
+    name: SAST OWASP Top 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: semgrep/semgrep-action@v1
+        with:
+          config: p/owasp-top-ten
+          generateSarif: true
+      - uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: semgrep.sarif
