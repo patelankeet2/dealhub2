@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './AdminDashboard.css';
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig';
 import {
   ResponsiveContainer,

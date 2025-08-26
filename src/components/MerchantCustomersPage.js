@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MerchantCustomersPage.css';
-import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db, auth } from '../firebaseConfig';
 import { format } from 'date-fns';
 
