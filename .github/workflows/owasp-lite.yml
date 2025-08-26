@@ -34,11 +34,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Install Semgrep CLI
-      - name: Install Semgrep CLI
+      # Install Semgrep via pip
+      - name: Install Semgrep
         run: |
-          curl -sSL https://github.com/returntocorp/semgrep/releases/latest/download/semgrep-linux-amd64.tar.gz | tar xz
-          sudo mv semgrep /usr/local/bin/
+          python3 -m pip install --upgrade pip
+          pip install semgrep
 
       # Run Semgrep OWASP Top 10 and generate SARIF
       - name: Run Semgrep OWASP Top 10
