@@ -21,8 +21,11 @@ jobs:
         uses: semgrep/semgrep-action@v1
         with:
           config: p/owasp-top-ten
-          generateSarif: true
-      - uses: github/codeql-action/upload-sarif@v3
+          output: semgrep.sarif
+          output-format: sarif
+
+      - name: Upload Semgrep SARIF results
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: semgrep.sarif
 
