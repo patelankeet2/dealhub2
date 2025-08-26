@@ -1,0 +1,156 @@
+.admin-dashboard {
+  font-family: 'Poppins', sans-serif;
+  background: #f9fafb;
+  min-height: 100vh;
+  padding: 2rem 5%;
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+}
+ 
+/* Header Section */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+ 
+.admin-greeting h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #111827;
+}
+ 
+.admin-greeting p {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+ 
+.admin-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #d1d5db;
+  transition: transform 0.3s;
+}
+ 
+.admin-avatar:hover {
+  transform: scale(1.05);
+}
+ 
+.clickable {
+  cursor: pointer;
+}
+ 
+/* Dashboard Cards */
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+ 
+.admin-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+ 
+.admin-card:hover {
+  transform: translateY(-4px);
+}
+ 
+.admin-card p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+ 
+.admin-card h3 {
+  font-size: 28px;
+  color: #111827;
+  font-weight: 600;
+}
+ 
+.admin-card.highlight {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+}
+ 
+/* Chart */
+.admin-chart {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 3rem;
+}
+ 
+.admin-chart h3 {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 1.2rem;
+  text-align: center;
+}
+ 
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #6b7280;
+  padding: 2rem 0;
+}
+ 
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+ 
+  .admin-greeting h2 {
+    font-size: 1.5rem;
+  }
+ 
+  .admin-avatar {
+    width: 50px;
+    height: 50px;
+  }
+ 
+  .admin-card h3 {
+    font-size: 24px;
+  }
+ 
+  .admin-chart h3 {
+    font-size: 1rem;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .admin-greeting h2 {
+    font-size: 1.25rem;
+  }
+ 
+  .admin-card {
+    padding: 1.2rem;
+  }
+ 
+  .admin-card h3 {
+    font-size: 20px;
+  }
+ 
+  .admin-chart {
+    padding: 1rem;
+  }
+}
+ 

@@ -1,0 +1,173 @@
+.admin-category-container {
+  font-family: 'Inter', sans-serif;
+  padding: 2rem 5%;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  color: #1f2937;
+}
+ 
+.admin-category-container h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+ 
+.add-category {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+ 
+.add-category input {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: white;
+}
+ 
+.category-table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+ 
+.category-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+ 
+.category-table th,
+.category-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 15px;
+}
+ 
+.category-table th {
+  background-color: #f1f5f9;
+  color: #374151;
+  font-weight: 600;
+}
+ 
+.category-table tr:last-child td {
+  border-bottom: none;
+}
+ 
+.edit-input {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  background-color: #fff;
+}
+ 
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-right: 6px;
+}
+ 
+.btn.add {
+  background-color: #10b981;
+  color: white;
+}
+ 
+.btn.edit {
+  background-color: #3b82f6;
+  color: white;
+}
+ 
+.btn.save {
+  background-color: #22c55e;
+  color: white;
+}
+ 
+.btn.cancel {
+  background-color: #facc15;
+  color: #1f2937;
+}
+ 
+.btn.delete {
+  background-color: #ef4444;
+  color: white;
+}
+ 
+.btn:hover {
+  opacity: 0.9;
+}
+ 
+.footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+ 
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .admin-category-container {
+    padding: 2rem 1rem;
+  }
+ 
+  .add-category {
+    flex-direction: column;
+    align-items: center;
+  }
+ 
+  .add-category input {
+    max-width: 100%;
+  }
+ 
+  .btn {
+    margin-top: 6px;
+    width: 100%;
+    max-width: 200px;
+  }
+ 
+  .category-table {
+    font-size: 14px;
+    min-width: 100%;
+  }
+ 
+  .category-table th,
+  .category-table td {
+    padding: 0.75rem;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .admin-category-container h2 {
+    font-size: 1.5rem;
+  }
+ 
+  .category-table th,
+  .category-table td {
+    font-size: 13px;
+    padding: 0.6rem;
+  }
+ 
+  .btn {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+ 
+  .edit-input {
+    font-size: 13px;
+  }
+}

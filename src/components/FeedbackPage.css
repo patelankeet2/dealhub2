@@ -1,0 +1,125 @@
+.feedback-page {
+  padding: 40px 5%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ 
+.feedback-page h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+}
+ 
+/* Form Wrapper */
+.feedback-form {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+ 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+ 
+ 
+.form-group label {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+}
+ 
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  transition: border 0.3s ease;
+}
+ 
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  background-color: #ffffff;
+}
+ 
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+ 
+/* Button */
+.feedback-form button {
+  width: 100%;
+  background-color: #6366f1;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+ 
+.feedback-form button:hover {
+  background-color: #4f46e5;
+}
+ 
+/* Submission Thank You */
+.thank-you {
+  max-width: 600px;
+  background-color: #ecfdf5;
+  color: #065f46;
+  font-size: 18px;
+  text-align: center;
+  padding: 40px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+ 
+/* Footer */
+.footer {
+  margin-top: 40px;
+  width: 100%;
+  padding: 1.5rem 10%;
+  background-color: #111827;
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+}
+ 
+/* Responsive */
+@media (max-width: 600px) {
+  .feedback-form {
+    padding: 24px;
+  }
+ 
+  .feedback-page h2 {
+    font-size: 24px;
+  }
+ 
+  .form-group label {
+    font-size: 14px;
+  }
+ 
+  .feedback-form button {
+    font-size: 15px;
+  }
+}

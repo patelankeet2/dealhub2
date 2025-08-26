@@ -1,0 +1,88 @@
+.settings-page {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9fafb;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.settings-page h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.profile-form {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-form label {
+  font-weight: 500;
+  color: #444;
+}
+
+.profile-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-form button {
+  padding: 10px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.profile-form button:hover {
+  background: #4f46e5;
+}
+
+.profile-pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-pic img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .profile-form {
+    padding: 1.5rem 1rem;
+  }
+
+  .profile-pic img {
+    width: 80px;
+    height: 80px;
+  }
+}

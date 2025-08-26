@@ -1,0 +1,142 @@
+.merchant-register-container {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+}
+
+.merchant-register-wrapper {
+  display: flex;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 960px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Left side */
+.merchant-register-left {
+  flex: 1;
+  background-color: #eef2ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.register-logo {
+  max-width: 250px;
+  width: 100%;
+}
+
+/* Right side */
+.merchant-register-right {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.merchant-register-right h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+input {
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #f1f5ff;
+  width: 100%;
+  max-width: 320px;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #6366f1;
+  background: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+button {
+  padding: 12px 28px;
+  background-color: #6366f1;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4f46e5;
+}
+
+.register-error {
+  color: #ef4444;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.register-links {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.register-links a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .merchant-register-wrapper {
+    flex-direction: column;
+  }
+
+  .merchant-register-left {
+    padding: 30px;
+  }
+
+  .merchant-register-right {
+    padding: 30px 20px;
+  }
+
+  .register-logo {
+    max-width: 160px;
+  }
+
+  input {
+    max-width: 100%;
+  }
+}

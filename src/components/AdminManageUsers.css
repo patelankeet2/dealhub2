@@ -1,0 +1,150 @@
+.manage-users-container {
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem 5%;
+  background: #f8fafc;
+  min-height: 100vh;
+  color: #1f2937;
+}
+ 
+.manage-users-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+ 
+.search-bar {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+ 
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+ 
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+}
+ 
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+ 
+.users-table th,
+.users-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  font-size: 14px;
+}
+ 
+.users-table th {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+}
+ 
+.users-table td {
+  color: #4b5563;
+}
+ 
+.users-table tr:hover {
+  background-color: #f9fafb;
+}
+ 
+.button-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+ 
+.users-table button {
+  padding: 6px 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+ 
+button.approve {
+  background: #10b981;
+  color: white;
+}
+button.approve:hover {
+  background: #059669;
+}
+ 
+button.reject {
+  background: #facc15;
+  color: #1f2937;
+}
+button.reject:hover {
+  background: #eab308;
+}
+ 
+button.delete {
+  background: #ef4444;
+  color: white;
+}
+button.delete:hover {
+  background: #dc2626;
+}
+ 
+.footer {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+ 
+/* 📱 Responsive enhancements */
+@media (max-width: 1024px) {
+  .users-table th,
+  .users-table td {
+    padding: 0.75rem;
+    font-size: 13px;
+  }
+ 
+  .users-table {
+    min-width: unset;
+  }
+ 
+  .search-bar input {
+    max-width: 100%;
+  }
+}
+ 
+@media (max-width: 600px) {
+  .manage-users-container {
+    padding: 1.5rem 2%;
+  }
+ 
+  .button-group {
+    flex-direction: column;
+    gap: 4px;
+  }
+ 
+  .users-table button {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+ 
+  .users-table th,
+  .users-table td {
+    white-space: nowrap;
+  }
+}

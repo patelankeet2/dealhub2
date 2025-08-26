@@ -1,0 +1,184 @@
+.deal-details-page {
+  padding: 50px 5%;
+  background-color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+ 
+.back-button {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+ 
+.back-button:hover {
+  text-decoration: underline;
+}
+ 
+.deal-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+}
+ 
+.deal-image {
+  flex: 1;
+  max-width: 450px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  padding: 16px;
+}
+ 
+.deal-info {
+  flex: 1;
+  max-width: 500px;
+  width: 100%;
+}
+ 
+.deal-info h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111827;
+}
+ 
+.price-info {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+ 
+.old-price {
+  text-decoration: line-through;
+  color: #9ca3af;
+  margin-right: 8px;
+}
+ 
+.new-price {
+  color: #ef4444;
+  font-weight: 700;
+  font-size: 22px;
+}
+ 
+.description {
+  font-size: 16px;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+ 
+.deal-info p {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #4b5563;
+}
+ 
+.add-to-cart-btn {
+  background-color: #6366f1;
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+ 
+.add-to-cart-btn:hover {
+  background-color: #4f46e5;
+}
+ 
+.deal-details-loading,
+.deal-details-error {
+  text-align: center;
+  font-size: 18px;
+  color: #9ca3af;
+  margin-top: 50px;
+}
+ 
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .deal-details-container {
+    padding: 30px;
+    gap: 30px;
+  }
+ 
+  .deal-info h2 {
+    font-size: 24px;
+  }
+ 
+  .new-price {
+    font-size: 20px;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .deal-details-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+  }
+ 
+  .deal-image,
+  .deal-info {
+    max-width: 100%;
+  }
+ 
+  .deal-info h2 {
+    font-size: 22px;
+  }
+ 
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .deal-details-page {
+    padding: 30px 4%;
+  }
+ 
+  .deal-details-container {
+    padding: 20px;
+  }
+ 
+  .deal-info h2 {
+    font-size: 20px;
+  }
+ 
+  .price-info {
+    font-size: 18px;
+  }
+ 
+  .add-to-cart-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+ 
+/* FOOTER */
+.footer {
+  margin-top: 60px;
+  padding: 1.5rem 10%;
+  background-color: #111827;
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+}

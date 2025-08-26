@@ -1,0 +1,105 @@
+.create-deal-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.create-deal-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.deal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline-color: #6366f1;
+  width: 100%;
+  box-sizing: border-box;
+  resize: both;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.image-preview-container {
+  margin-top: -1rem;
+}
+
+.preview-image {
+  margin-top: 0.75rem;
+  max-width: 400px;
+  max-height: 400px;
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  object-fit: cover;
+  justify-content: center;
+}
+
+/* Button */
+.form-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+button.save {
+  background-color: #6366f1;
+  color: white;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.save:hover {
+  background-color: #4f46e5;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: gray;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .create-deal-container {
+    padding: 1.5rem 1rem;
+  }
+}
