@@ -34,12 +34,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Run Semgrep and output SARIF file
+      # Run Semgrep and generate SARIF file
       - name: Run Semgrep OWASP Top 10
         uses: semgrep/semgrep-action@v1
         with:
           config: p/owasp-top-ten
-          output: ${{ github.workspace }}/semgrep.sarif   # Correct path
+          output: ${{ github.workspace }}/semgrep-results.sarif   # Fixed path
           output-format: sarif
           fail-on: warning   # Optional: fail job if issues found
 
@@ -47,4 +47,4 @@ jobs:
       - name: Upload Semgrep SARIF results
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: ${{ github.workspace }}/semgrep.sarif
+          sarif_file: ${{ github.workspace }}/semgrep-results.sarif
