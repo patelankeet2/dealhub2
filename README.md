@@ -1,71 +1,219 @@
-# Getting Started with Create React App.
+# 🛍️ Deal Hub - Discount Aggregator Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Deal Hub** is a role-based, full-stack web platform built with React and Firebase that allows users to browse and purchase limited-time deals, merchants to create and track offers, and admins to moderate users and deals. The system is designed to be responsive, scalable, and user-friendly across all devices.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌐 Live Hosting
 
-### `npm start`
+🔗 **Access the Live App:** https://dealhub-b48fa.web.app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> Hosted on Firebase with automatic deployment from the production build.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 CI/CD with GitHub Actions + Firebase Hosting
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project is deployed automatically using **GitHub Actions** and **Firebase Hosting**.
 
-### `npm run build`
+### 🔄 Workflow Overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### ✅ PR Preview Deployments
+- Every **pull request** (`pull_request`) triggers a workflow (`firebase-deploy-pr.yml`).
+- The app is built (`npm ci && npm run build`).
+- Firebase Hosting creates a **Preview Channel** and comments a unique preview URL in the PR.
+- Reviewers can test changes before merging.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 🚀 Production Deployments
+- Any **merge to the `main` branch** triggers another workflow (`firebase-deploy-live.yml`).
+- The app is built and deployed to the **live site** (`channelId: live`) on Firebase Hosting.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🔑 Secrets
+- `FIREBASE_SERVICE_ACCOUNT` → JSON service account key with **Firebase Hosting Admin** + **Service Account Token Creator** roles.
+- `GITHUB_TOKEN` → Automatically provided by GitHub to post PR comments and trigger deployments.
 
-### `npm run eject`
+### ✅ Deployment Steps
+1. Create a **feature branch** → push → open a PR.
+2. GitHub Actions builds the app and deploys to a **Preview Channel**.
+3. Preview URL is shown in the PR.
+4. Merge PR into **main**.
+5. GitHub Actions builds again and deploys to the **production site**.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🛠 Rollback
+- All deployments are visible in the **Firebase Console → Hosting**.
+- Rollback can be done by selecting a previous deployment version.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📁 Project Structure
 
-## Learn More
+```plaintext
+patelankeet2-dealhub2/
+├── README.md                   # Project documentation
+├── TESTING_REFLECTION.md       # Reflection notes for testing
+├── firebase.json               # Firebase deployment config
+├── .firebaserc                 # Firebase project alias config
+├── package.json                # Node dependencies & scripts
+├── public/                     # Static assets
+│   ├── index.html              # App HTML entry point
+│   ├── manifest.json           # PWA manifest
+│   └── robots.txt              # SEO rules
+├── src/                        # Application source
+│   ├── App.js                  # Main App entry
+│   ├── App.css                 # Global styles
+│   ├── App.test.js             # React testing config
+│   ├── CHANGELOG.md            # Project version history
+│   ├── firebaseConfig.js       # Firebase initialization
+│   ├── index.js                # ReactDOM entry point
+│   ├── index.css               # Base CSS
+│   ├── reportWebVitals.js      # Performance metrics
+│   ├── setupTests.js           # Test setup file
+│   ├── context/                # Global contexts
+│   │   └── AuthContext.js      # Auth state context
+│   ├── components/             # Reusable UI + features
+│   │   ├── AdminDashboard.{js,css}
+│   │   ├── AdminEarnings.{js,css}
+│   │   ├── AdminManageCategory.{js,css}
+│   │   ├── AdminManageDeals.{js,css}
+│   │   ├── AdminManageUsers.{js,css}
+│   │   ├── AdminProfile.{js,css}
+│   │   ├── AnalyticsPage.{js,css}
+│   │   ├── CartPage.{js,css}
+│   │   ├── CreateDeal.{js,css}
+│   │   ├── CustomerForgotPassword.js
+│   │   ├── CustomerProfilePage.{js,css}
+│   │   ├── DealDetailsPage.{js,css}
+│   │   ├── DealsPage.{js,css}
+│   │   ├── EditDealPage.js
+│   │   ├── FeedbackPage.{js,css}
+│   │   ├── LandingPage.{js,css}
+│   │   ├── Login.{js,css}
+│   │   ├── MerchantCustomersPage.{js,css}
+│   │   ├── MerchantDashboard.{js,css}
+│   │   ├── MerchantDealsPage.{js,css}
+│   │   ├── MerchantForgotPassword.{js,css}
+│   │   ├── MerchantLogin.{js,css}
+│   │   ├── MerchantRegister.{js,css}
+│   │   ├── Navbar.{js,css,test.js}
+│   │   ├── OrderTrackingPage.{js,css}
+│   │   ├── PaymentPage.{js,css}
+│   │   ├── ProtectedRoute.js
+│   │   ├── Register.js
+│   │   └── Settings.{js,css}
+│   └── pages/                  # Page-level components
+│       ├── NotFound.js
+│       └── NotFound.css
+├── .firebase/                  # Firebase cache
+│   └── hosting.YnVpbGQ.cache
+└── .github/                    # GitHub workflows
+    └── workflows/
+        ├── firebase-deploy-live.yml  # Live deploy pipeline
+        ├── firebase-deploy-pr.yml    # PR preview deploy pipeline
+        ├── owasp-lite.yml            # Security scan
+        └── tests.yml                 # Unit test workflow
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Features by User Role
 
-### Code Splitting
+### 👥 Customer
+- 🔐 Register/Login
+- 🔎 Browse, filter, and search deals
+- 🛒 Cart & secure checkout
+- 📜 Order tracking & purchase history
+- 💬 Rate and review deals
+- 👤 View and update profile with avatar URL
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 🧑‍💼 Merchant
+- 🔐 Login with email and driving license
+- 🧾 Create, edit, and delete deals
+- 📊 Track deal stats and earnings
+- 🔎 Search deals and customer list
+- ⚙️ Manage profile & update settings
 
-### Analyzing the Bundle Size
+### 🛡️ Admin
+- 🔐 Secure admin login
+- ✅ Approve/reject merchant registrations & deals
+- 🧑‍💻 Manage all user accounts
+- 📊 View global analytics
+- 🗂️ Moderate platform content
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🧑‍💻 Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Layer         | Technology                    |
+|---------------|-------------------------------|
+| Frontend      | React, React Router, Bootstrap |
+| Auth/Backend  | Firebase Auth, Firestore DB, Firebase Hosting |
+| Styling       | CSS, Bootstrap (custom styling) |
+| Storage       | Firebase Storage for images   |
+| State Mgmt    | React Context API             |
+| Deployment    | Firebase CLI, GitHub Actions CI/CD |
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📦 Getting Started
 
-### Deployment
+### ✅ Prerequisites
+- Node.js and npm installed
+- Firebase CLI (`npm install -g firebase-tools`)
+- Firebase project created and configured
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 🔧 Installation
 
-### `npm run build` fails to minify
+```bash
+git clone https://github.com/patelankeet2/deal-hub
+cd dealhub
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-completed ci/cd
+🚀 Local Development
+npm start
+
+🔥 Firebase Deployment
+firebase login
+firebase init hosting
+firebase deploy
+
+📈 Contribution Overview
+
+📍 Ankeet Patel: Merchant Dashboard, Deal Management, Analytics, Routing, Navbar, Auth Logic, CI/CD Automation, Owasp Testing, Jest Unit testing & Automated deployment.
+
+📍 Mazhar: Admin dashboard, user moderation, and approvals
+
+📍 Samika: Customer experience, feedback, cart, and checkout flow
+
+All members contributed to App.js and routing logic.
+
+📍 Harpreet, Ankeet & Mazhar: Worker together in Studio-4 to complete CI/CD pipelines, OWASP Testing, Jest Unit Testing & Automated Deployment.
+
+
+🧪 Testing Strategy
+
+✅ Manual UI and UX testing across roles
+
+✅ Browser compatibility testing (Chrome, Firefox)
+
+✅ Firebase Emulator tests (Auth + Firestore)
+
+✅ Real-time validation & error handling
+
+✅ Code reviewed and merged via pull requests
+
+✅ Automated unit tests via tests.yml
+
+✅ Security checks via OWASP Lite workflow (owasp-lite.yml)
+
+📌 Version History
+
+Check CHANGELOG.md for full release notes and tracked changes.
+
+📄 License
+
+This project is released under the MIT License.
+
+🙌 Acknowledgements
+
+Thanks to Otago Polytechnic and our mentors for guidance throughout Studio 3 & 4.
+
+Made with 💻 using React, Firebase, GitHub Actions & Team Collaboration
