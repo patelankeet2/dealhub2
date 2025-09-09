@@ -24,9 +24,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gitleaks/gitleaks-action@v2
         with:
-          args: detect --no-git -v   # Fail if secrets are found
+          fetch-depth: 0
+
+      - name: Gitleaks scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # If your repo is in an org and needs a license, uncomment below:
+          # GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
 
   semgrep:
     name: SAST OWASP Top 10
@@ -34,18 +40,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Install Semgrep via pip
       - name: Install Semgrep
         run: |
           python3 -m pip install --upgrade pip
           pip install semgrep
 
-      # Run Semgrep OWASP Top 10 and generate SARIF
       - name: Run Semgrep OWASP Top 10
         run: |
           semgrep --config p/owasp-top-ten --sarif --sarif-output ${{ github.workspace }}/semgrep.sarif
 
-      # Upload SARIF results to GitHub
       - name: Upload Semgrep SARIF results
         uses: github/codeql-action/upload-sarif@v3
         with:
