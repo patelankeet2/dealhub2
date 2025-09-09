@@ -3,19 +3,20 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-// Your web app's Firebase configuration
+
+// Firebase configuration from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyAvOhI3UwvaQQnsBwEyWRZCrdLogDbSVOY",
-  authDomain: "dealhub-b48fa.firebaseapp.com",
-  projectId: "dealhub-b48fa",
-  storageBucket: "dealhub-b48fa.firebasestorage.app",
-  messagingSenderId: "968288379785",
-  appId: "1:968288379785:web:4b70f4fbe04a5c2c257758"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
- 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
- 
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
