@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "test-key",
@@ -11,19 +12,20 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID || "test-app",
 };
 
-// ✅ Prevent Firebase from throwing invalid key errors during tests
-let app, auth, db;
+let app, auth, db, storage;
 
 if (process.env.NODE_ENV === "test") {
-  // Fake objects for Jest
+  // Mock Firebase for Jest tests
   app = {};
   auth = {};
   db = {};
+  storage = {};
 } else {
-  // Real Firebase init for dev/prod
+  // Real Firebase init
   app = initializeApp(firebaseConfig);
   auth = getAuth(app);
   db = getFirestore(app);
+  storage = getStorage(app);
 }
 
-export { app, auth, db };
+export { app, auth, db, storage };
