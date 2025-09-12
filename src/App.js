@@ -33,9 +33,6 @@ import CustomerForgotPassword from './components/CustomerForgotPassword';
 import Navbar from './components/Navbar';
 import NotFound from './pages/NotFound';
 
-import { AuthProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
-import EditDealPage from './components/EditDealPage';
 
 function App() {
   return (
