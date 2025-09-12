@@ -14,7 +14,7 @@
 
 ## 🚀 CI/CD with GitHub Actions + Firebase Hosting
 
-This project is deployed automatically using **GitHub Actions** and **Firebase Hosting**.
+
 
 ### 🔄 Workflow Overview
 
